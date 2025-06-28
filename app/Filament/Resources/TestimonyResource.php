@@ -6,6 +6,9 @@ use App\Filament\Resources\TestimonyResource\Pages;
 use App\Filament\Resources\TestimonyResource\RelationManagers;
 use App\Models\Testimony;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,22 +27,21 @@ class TestimonyResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\FileUpload::make('picture')
-                    ->required()
+                FileUpload::make('picture')
                     ->image()
                     ->imageEditor(),
-                Forms\Components\TextInput::make('name')
+                TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('occupation')
-                    ->required()
+                TextInput::make('occupation')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('rating')
+                TextInput::make('rating')
                     ->numeric()
                     ->required(),
-                Forms\Components\TextInput::make('description')
+                Textarea::make('description')
                     ->required()
-                    ->maxLength(500),
+                    ->maxLength(500)
+                    ->columnSpanFull(),
             ]);
     }
 

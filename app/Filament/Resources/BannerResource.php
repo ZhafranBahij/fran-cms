@@ -28,7 +28,8 @@ class BannerResource extends Resource
                 Forms\Components\FileUpload::make('image')
                     ->required()
                     ->image()
-                    ->imageEditor(),
+                    ->imageEditor()
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -37,7 +38,8 @@ class BannerResource extends Resource
                     ->maxLength(255),
                 Forms\Components\Textarea::make('description')
                     ->required()
-                    ->maxLength(500),
+                    ->maxLength(500)
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('url_cta')
                     ->url()
                     ->maxLength(255),

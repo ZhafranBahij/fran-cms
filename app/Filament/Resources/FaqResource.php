@@ -6,6 +6,7 @@ use App\Filament\Resources\FaqResource\Pages;
 use App\Filament\Resources\FaqResource\RelationManagers;
 use App\Models\Faq;
 use Filament\Forms;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -27,10 +28,12 @@ class FaqResource extends Resource
             ->schema([
                 TextInput::make('question')
                     ->required()
-                    ->maxLength(255),
-                TextInput::make('answer')
+                    ->maxLength(255)
+                    ->columnSpanFull(),
+                Textarea::make('answer')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->columnSpanFull(),
             ]);
     }
 

@@ -6,9 +6,15 @@ use App\Filament\Resources\ArticleResource\Pages;
 use App\Filament\Resources\ArticleResource\RelationManagers;
 use App\Models\Article;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -24,18 +30,30 @@ class ArticleResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
+                FileUpload::make('thumbnail')
+                    ->image()
+                    ->required()
+                    ->imageEditor()
+                    ->columnSpanFull(),
+                TextInput::make('title')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('tag')
+                TextInput::make('tag')
                     ->required()
                     ->maxLength(100),
-                Forms\Components\TextInput::make('category')
+                Select::make('type')
+                    ->options([
+                        'project' => 'project',
+                        'blog' => 'blog',
+                        'news' => 'news',
+                    ])
+                    ->searchable(),
+                TextInput::make('category')
                     ->required()
                     ->maxLength(100),
-                Forms\Components\Textarea::make('description')
+                RichEditor::make('content')
                     ->required()
-                    ->maxLength(500),
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -43,9 +61,9 @@ class ArticleResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('thumbnail'),
                 TextColumn::make('title'),
                 TextColumn::make('tag'),
-                TextColumn::make('description'),
                 TextColumn::make('category'),
             ])
             ->filters([

@@ -7,6 +7,7 @@ use App\Filament\Resources\AboutUsResource\RelationManagers;
 use App\Models\AboutUs;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -30,7 +31,8 @@ class AboutUsResource extends Resource
             ->schema([
                 FileUpload::make('company_picture')
                     ->image()
-                    ->imageEditor(),
+                    ->imageEditor()
+                    ->columnSpanFull(),
                 FileUpload::make('logo')
                     ->image()
                     ->imageEditor(),
@@ -42,14 +44,15 @@ class AboutUsResource extends Resource
                     ->maxLength(255),
                 TextInput::make('since')
                     ->maxLength(255),
-                TextInput::make('vision')
+                TextArea::make('vision')
                     ->maxLength(255),
-                TextInput::make('mission')
+                TextArea::make('mission')
                     ->maxLength(255),
                 TextInput::make('featured')
                     ->maxLength(255),
-                TextInput::make('description')
-                    ->maxLength(255),
+                Textarea::make('description')
+                    ->maxLength(255)
+                    ->columnSpanFull(),
             ]);
     }
 
