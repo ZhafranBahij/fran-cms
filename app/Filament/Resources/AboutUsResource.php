@@ -68,7 +68,6 @@ class AboutUsResource extends Resource
                 TextColumn::make('vision'),
                 TextColumn::make('mission'),
                 TextColumn::make('featured'),
-                TextColumn::make('description'),
             ])
             ->filters([
                 //

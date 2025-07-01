@@ -43,7 +43,7 @@ https://templatemo.com/tm-591-villa-agency
   </div>
   <!-- ***** Preloader End ***** -->
 
-  @include('layouts.navbar')
+  <livewire:component.navbar />
 
   @yield('content')
 
