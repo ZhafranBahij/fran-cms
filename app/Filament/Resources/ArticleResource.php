@@ -63,6 +63,7 @@ class ArticleResource extends Resource
             ->columns([
                 ImageColumn::make('thumbnail'),
                 TextColumn::make('title'),
+                TextColumn::make('type'),
                 TextColumn::make('tag'),
                 TextColumn::make('category'),
             ])

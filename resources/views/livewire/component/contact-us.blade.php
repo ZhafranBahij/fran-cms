@@ -23,13 +23,13 @@
             <div class="col-lg-6">
               <div class="item phone">
                 <img src="assets/images/phone-icon.png" alt="" style="max-width: 52px;">
-                <h6>010-020-0340<br><span>Phone Number</span></h6>
+                <h6>{{ $contact_us->mobile_phone }}<br><span>Phone Number</span></h6>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="item email">
                 <img src="assets/images/email-icon.png" alt="" style="max-width: 52px;">
-                <h6>info@villa.co<br><span>Business Email</span></h6>
+                <h6>{{ $contact_us->email }}<br><span>Business Email</span></h6>
               </div>
             </div>
           </div>
